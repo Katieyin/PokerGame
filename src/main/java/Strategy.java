@@ -280,4 +280,54 @@ public class Strategy {
         }
     }
 
+    public List<Integer> isOneCardFromFullHouse(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        if (this.isThreeOfSameRank(cards).size() == 2) {
+            index.add(this.isThreeOfSameRank(cards).get(0));
+        } else if (this.hasTwoPairs(cards) >= 0) {
+            index.add(this.hasTwoPairs(cards));
+        } else {
+            index.clear();
+        }
+        return index;
+    }
+
+    public List<Integer> isThreeOfSameRank(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        if (this.isThreeOfAKind(cards).isMatched()) {
+            for (int i = 0; i < cards.size(); i++) {
+                if ((cards.get(i).getRank() != this.isThreeOfAKind(cards).getHighestCard().getRank())) {
+                    index.add(i);
+                }
+            }
+        }
+        if (index.size() == 2) {
+            return index;
+        } else {
+            index.clear();
+            return index;
+        }
+    }
+
+    public int hasTwoPairs(List<Card> cards) {
+        this.sortCards(cards);
+        int index = -1;
+        if (this.isTwoPairs(cards).isMatched()) {
+            for (int i = 0; i < cards.size(); i++) {
+                int count = 0;
+                for (int j = 0; j < cards.size(); j++) {
+                    if (cards.get(j).getRank() == cards.get(i).getRank()) {
+                        count++;
+                    }
+                }
+                if (count == 1) {
+                    return i;
+                }
+            }
+        }
+        return index;
+    }
+
 }
