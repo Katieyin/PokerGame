@@ -49,4 +49,20 @@ public class DetectRank {
             assertEquals(cards.get(i).getRank(), testPlayer.getCards().get(i).getRank());
         }
     }
+
+    @Test
+    public void testHandsWithoutExhcange() {
+        Player testPlayer = new Player("H1 HJ HK HQ H10");
+        boolean isMatched = testPlayer.getStrategy().isRoyalFlush(testPlayer.getCards()).isMatched();
+        assertTrue(isMatched);
+    }
+
+    @Test
+    public void testHandsWithExhcange() {
+        Game game = new Game("HA HJ H10 HK HQ SA SJ S10 SK C9 SQ");
+        Player winner = game.playGame();
+        assertEquals("One Card Away From Royal Flush", winners.get(0).getExchangeMatch());
+        assertEquals("Royal Flush", winners.get(0).getResult().getCombination());
+        assertEquals("AIP", winners.get(0).getName());
+    }
 }
