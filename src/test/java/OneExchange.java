@@ -11,6 +11,12 @@ public class OneExchange {
     }
 
     @Test
+    public void testThreeOfAKind() {
+        Player testPlayer = new Player("S3 C4 H3 S7 D3");
+        this.isMatched = testPlayer.getStrategy().isThreeOfAKind(testPlayer.getCards()).isMatched();
+    }
+
+    @Test
     public void testTwoPairs() {
         Player testPlayer = new Player("S3 C7 H3 S7 D9");
         this.isMatched = testPlayer.getStrategy().isTwoPairs(testPlayer.getCards()).isMatched();
