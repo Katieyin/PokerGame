@@ -1,4 +1,4 @@
-public class Card {
+public class Card implements Comparable<Card> {
     private String suit;
     private int rank;
 
@@ -21,5 +21,18 @@ public class Card {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public int compareTo(Card card) {
+        if (this.getRank() == 1 && card.getRank() != 1)
+            return 1;
+        else if (this.getRank() != 1 && card.getRank() == 1)
+            return -1;
+        else if (this.getRank() > card.getRank())
+            return 1;
+        else if (this.getRank() < card.getRank())
+            return -1;
+        else
+            return this.getSuit().compareTo(card.getSuit());
     }
 }
