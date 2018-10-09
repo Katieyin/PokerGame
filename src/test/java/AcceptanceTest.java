@@ -200,4 +200,92 @@ public class AcceptanceTest {
         assertEquals("One Pair", winners.get(18).getResult().getCombination());
         assertEquals("AIP", winners.get(18).getName());
     }
+
+    @Test
+//    straight flush with the same highest card, then highest suit wins
+    public void testHigherStraightFlushWins() {
+        assertEquals("Straight Flush", winners.get(19).getResult().getCombination());
+        assertEquals("AIP", winners.get(19).getName());
+    }
+
+    @Test
+//    three-of-a-kind, the highest card of the 2 triplets wins
+    public void testHigherThreeOfAKindWins() {
+        assertEquals("3 Of A Kind", winners.get(20).getResult().getCombination());
+        assertEquals("AIP", winners.get(20).getName());
+    }
+
+    @Test
+//    two straights with the same rank for their highest card, then highest suit of that highest card win
+    public void testHigherSuitStraightWins() {
+        assertEquals("Straight", winners.get(21).getResult().getCombination());
+        assertEquals("AIP", winners.get(21).getName());
+    }
+
+    @Test
+//    two pairs with the same highest pair for each participant, then highest suit of this highest pair wins
+    public void testHigherTwoPairsWins() {
+        assertEquals("Two Pairs", winners.get(22).getResult().getCombination());
+        assertEquals("AIP", winners.get(22).getName());
+    }
+
+    @Test
+//    two pairs, with distinct highest pairs for the 2 participants, then highest pair wins
+    public void testHigherRankTwoPairsWins() {
+        assertEquals("Two Pairs", winners.get(23).getResult().getCombination());
+        assertEquals("AIP", winners.get(23).getName());
+    }
+
+    @Test
+//    one pair, with both of these pairs of equal rank, then highest suit of these pairs wins,
+//    one pair, with distinct-ranked pairs for the 2 participants,
+//    then pair with highest card wins
+    public void testHigherOnePairWins() {
+        assertEquals("One Pair", winners.get(24).getResult().getCombination());
+        assertEquals("AIP", winners.get(24).getName());
+    }
+
+    @Test
+//    high card hand with same rank for the highest card of each participant, then highest suit of the highest card win
+    public void testHigherSuitCardWins() {
+        assertEquals("Highest Card", winners.get(25).getResult().getCombination());
+        assertEquals("AIP", winners.get(25).getName());
+    }
+
+    @Test
+//    high card hand with distinct highest card for each participant, then highest ranked card wins
+    public void testHigherRankCardWins() {
+        assertEquals("Highest Card", winners.get(26).getResult().getCombination());
+        assertEquals("AIP", winners.get(26).getName());
+    }
+
+    @Test
+    public void testHigher5FlushWins() {
+        assertEquals("Flush", winners.get(27).getResult().getCombination());
+        assertEquals("AIP", winners.get(27).getName());
+    }
+
+    @Test
+    public void testHigher4FlushWins() {
+        assertEquals("Flush", winners.get(28).getResult().getCombination());
+        assertEquals("AIP", winners.get(28).getName());
+    }
+
+    @Test
+    public void testHigher3FlushWins() {
+        assertEquals("Flush", winners.get(29).getResult().getCombination());
+        assertEquals("AIP", winners.get(29).getName());
+    }
+
+    @Test
+    public void testHigher2FlushWins() {
+        assertEquals("Flush", winners.get(30).getResult().getCombination());
+        assertEquals("AIP", winners.get(30).getName());
+    }
+
+    @Test
+    public void testHigher1FlushWins() {
+        assertEquals("Flush", winners.get(31).getResult().getCombination());
+        assertEquals("AIP", winners.get(31).getName());
+    }
 }
