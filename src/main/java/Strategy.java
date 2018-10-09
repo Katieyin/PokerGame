@@ -330,4 +330,26 @@ public class Strategy {
         return index;
     }
 
+    public List<Integer> isThreeOfSameSuit(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        for (int i = 0; i < cards.size(); i++) {
+            int count = 0;
+            index.clear();
+            for (int j = 0; j < cards.size(); j++) {
+                if (cards.get(i).getSuit().equals(cards.get(j).getSuit())) {
+                    count++;
+                } else {
+                    index.add(j);
+                }
+            }
+            if (count == 3) {
+                return index;
+            } else {
+                index.clear();
+            }
+        }
+        return index;
+    }
+
 }
