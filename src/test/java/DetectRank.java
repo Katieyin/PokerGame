@@ -8,13 +8,16 @@ public class DetectRank {
     @Test
     public void testSuitsRankedCorrectly() {
         Card card1 = new Card("H", 4);
-        Card card2 = new Card("H", 5);
+        Card card2 = new Card("D", 4);
         Card card3 = new Card("S", 4);
-        int lessThan = card1.compareTo(card2);
-        int greaterThan = card2.compareTo(card3);
-        int greaterThan2 = card3.compareTo(card1);
-        assertTrue( lessThan < 0);
-        assertTrue( greaterThan > 0);
+        Card card4 = new Card("C", 4);
+        int greaterThan1 = card1.compareTo(card2);
+        int greaterThan2 = card2.compareTo(card4);
+        int lessThan1 = card1.compareTo(card3);
+        int lessThan2 = card2.compareTo(card3);
+        assertTrue( lessThan1 < 0);
+        assertTrue( lessThan2 < 0);
+        assertTrue( greaterThan1 > 0);
         assertTrue( greaterThan2 > 0);
     }
 
