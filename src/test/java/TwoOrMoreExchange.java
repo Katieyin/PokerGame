@@ -34,6 +34,7 @@ public class TwoOrMoreExchange {
         this.size = this.getExchangeSize(testPlayer);
         List<Integer> index = testPlayer.getStrategy().isThreeOfSameSuit(testPlayer.getCards());
         this.isMatched = index.size() == 2;
+        assertEquals(2, this.size);
     }
 
     @Test
@@ -42,5 +43,6 @@ public class TwoOrMoreExchange {
         this.size = this.getExchangeSize(testPlayer);
         List<Integer> index = testPlayer.getStrategy().hasThreeCardInSequence(testPlayer.getCards());
         this.isMatched = index.size() == 2;
+        assertEquals(2, this.size);
     }
 }
