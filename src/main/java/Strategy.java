@@ -12,6 +12,41 @@ public class Strategy {
         return cards.get(cards.size() - 1);
     }
 
+    public Result isNumberOfAKind(List<Card> cards, int number) {
+        this.sortCards(cards);
+        int pairCount = 0;
+        Card highestCard = cards.get(0);
+        Result result = new Result(highestCard, false, "Highest Card");
+        if (cards == null || cards.size() != 5) {
+            return result;
+        } else {
+            for (int i = 0; i < cards.size(); i++) {
+                pairCount = 0;
+                for (int j = 0; j < cards.size(); j++) {
+                    if (cards.get(j).getRank() == cards.get(i).getRank()) {
+                        pairCount++;
+                    }
+                }
+                if (pairCount == number) {
+                    result.setMatched(true);
+                    if (highestCard.getRank() == 1 && highestCard.getRank() != cards.get(i).getRank()) {
+                        highestCard = cards.get(i);
+                    }
+                    if (cards.get(i).isGreaterThan(highestCard)) {
+                        highestCard = cards.get(i);
+                    }
+                    result.setHighestCard(highestCard);
+                    if (number == 2) {
+                        result.setCombination("One Pair");
+                    } else {
+                        result.setCombination(number + " Of A Kind");
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
     public Result isStraight(List<Card> cards) {
         this.sortCards(cards);
         Card highestCard = this.getHighestCard(cards);
@@ -50,5 +85,9 @@ public class Strategy {
         return result;
     }
 
+    public Result isOnePair(List<Card> cards) {
+        this.sortCards(cards);
+        return isNumberOfAKind(cards, 2);
+    }
 
 }
