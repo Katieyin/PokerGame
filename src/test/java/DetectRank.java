@@ -51,14 +51,14 @@ public class DetectRank {
     }
 
     @Test
-    public void testHandsWithoutExhcange() {
+    public void testHandsWithoutExchange() {
         Player testPlayer = new Player("H1 HJ HK HQ H10");
         boolean isMatched = testPlayer.getStrategy().isRoyalFlush(testPlayer.getCards()).isMatched();
         assertTrue(isMatched);
     }
 
     @Test
-    public void testHandsWithExhcange() {
+    public void testHandsWithExchange() {
         Game game = new Game("HA HJ H10 HK HQ SA SJ S10 SK C9 SQ");
         Player winner = game.playGame();
         assertEquals("One Card Away From Royal Flush", winner.getExchangeMatch());
