@@ -124,4 +124,9 @@ public class Strategy {
         return isNumberOfAKind(cards, 4);
     }
 
+    public Result isThreeOfAKind(List<Card> cards) {
+        this.sortCards(cards);
+        return isNumberOfAKind(cards, 3);
+    }
+
 }
