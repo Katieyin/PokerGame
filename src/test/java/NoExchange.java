@@ -22,4 +22,10 @@ public class NoExchange {
         Player testPlayer = new Player("H4 H5 S4 C4 D4");
         this.isMatched = testPlayer.getStrategy().isFourOfAKind(testPlayer.getCards()).isMatched();
     }
+
+    @Test
+    public void testFlush() {
+        Player testPlayer = new Player("S5 S10 S1 S7 S6");
+        this.isMatched = testPlayer.getStrategy().isFlush(testPlayer.getCards()).isMatched();
+    }
 }
