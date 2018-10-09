@@ -52,4 +52,11 @@ public class OneExchange {
         List<Integer> index = testPlayer.getStrategy().isOneCardFromStraightFlush(testPlayer.getCards());
         this.isMatched = index.size() == 1;
     }
+
+    @Test
+    public void testOneCardAwayFromFullHouse() {
+        Player testPlayer = new Player("S10 C10 D10 S6 S7");
+        List<Integer> index = testPlayer.getStrategy().isOneCardFromFullHouse(testPlayer.getCards());
+        this.isMatched = index.size() == 1;
+    }
 }
