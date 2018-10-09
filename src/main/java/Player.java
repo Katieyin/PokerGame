@@ -50,4 +50,53 @@ public class Player {
     public String getExchangeMatch() { return exchangeMatch; }
 
     public void setExchangeMatch(String exchangeMatch) { this.exchangeMatch = exchangeMatch; }
+
+    public void printCards() {
+        System.out.print(this.getName() + " has: ");
+        for (Card card : this.cards) {
+            card.printCard();
+            System.out.print(" ");
+        }
+        System.out.println(" ");
+    }
+
+    public int evaluate() {
+        int score = 0;
+        if (this.strategy.isRoyalFlush(cards).isMatched()) {
+            this.setResult(this.strategy.isRoyalFlush(cards));
+            score = 10;
+        } else if (this.strategy.isStraightFlush(cards).isMatched()) {
+            this.setResult(this.strategy.isStraightFlush(cards));
+            score = 9;
+        } else if (this.strategy.isFourOfAKind(cards).isMatched()) {
+            this.setResult(this.strategy.isFourOfAKind(cards));
+            score = 8;
+        } else if (this.strategy.isFullHouse(cards).isMatched()) {
+            this.setResult(this.strategy.isFullHouse(cards));
+            score = 7;
+        } else if (this.strategy.isFlush(cards).isMatched()) {
+            this.setResult(this.strategy.isFlush(cards));
+            score = 6;
+        } else if (this.strategy.isStraight(cards).isMatched()) {
+            this.setResult(this.strategy.isStraight(cards));
+            score = 5;
+        } else if (this.strategy.isThreeOfAKind(cards).isMatched()) {
+            this.setResult(this.strategy.isThreeOfAKind(cards));
+            score = 4;
+        } else if (this.strategy.isTwoPairs(cards).isMatched()) {
+            this.setResult(this.strategy.isTwoPairs(cards));
+            score = 3;
+        } else if (this.strategy.isOnePair(cards).isMatched()) {
+            this.setResult(this.strategy.isOnePair(cards));
+            score = 2;
+        } else {
+            Result result = new Result(this.strategy.getHighestCard(cards), false, "Highest Card");
+            this.setResult(result);
+            score = 1;
+        }
+//        System.out.println(score);
+        this.result.printCombination();
+        return score;
+    }
+
 }
