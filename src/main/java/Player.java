@@ -99,4 +99,51 @@ public class Player {
         return score;
     }
 
+    public List<Integer> canExchange(int score) {
+        List<Integer> index = new ArrayList<Integer>();
+        this.sortCards();
+        if (score >= 5) {
+            return index;
+        }
+        System.out.print("Detected AIP is: ");
+        if (this.strategy.isOneCardFromRoyalFlush(cards).size() == 1) {
+            this.setExchangeMatch("One Card Away From Royal Flush");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isOneCardFromRoyalFlush(cards);
+        } else if (this.strategy.isOneCardFromStraightFlush(cards).size() == 1) {
+            this.setExchangeMatch("One Card Away From Straight Flush");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isOneCardFromStraightFlush(cards);
+        } else if (this.strategy.isOneCardFromFullHouse(cards).size() == 1) {
+            this.setExchangeMatch("One Card Away From Full House");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isOneCardFromFullHouse(cards);
+        } else if (this.strategy.isOneCardFromFlush(cards).size() == 1) {
+            this.setExchangeMatch("One Card Away From Flush");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isOneCardFromFlush(cards);
+        } else if (this.strategy.isOneCardFromStraight(cards).size() == 1) {
+            this.setExchangeMatch("One Card Away From Straight");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isOneCardFromStraight(cards);
+        } else if (this.strategy.isThreeOfSameSuit(cards).size() == 2) {
+            this.setExchangeMatch("Three Of The Same Suit");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.isThreeOfSameSuit(cards);
+        } else if (this.strategy.hasThreeCardInSequence(cards).size() == 2) {
+            this.setExchangeMatch("Three Cards In Sequence");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.hasThreeCardInSequence(cards);
+        } else if (this.strategy.hasOnePair(cards).size() == 3) {
+            this.setExchangeMatch("Has One Pair");
+            System.out.println(this.getExchangeMatch());
+            return this.strategy.hasOnePair(cards);
+        }
+        this.setExchangeMatch("No Strategy");
+        System.out.println(this.getExchangeMatch());
+        index.add(0);
+        index.add(1);
+        index.add(2);
+        return index;
+    }
 }
