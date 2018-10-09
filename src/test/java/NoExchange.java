@@ -34,4 +34,10 @@ public class NoExchange {
         Player testPlayer = new Player("S5 H5 S4 C4 D4");
         this.isMatched = testPlayer.getStrategy().isFullHouse(testPlayer.getCards()).isMatched();
     }
+
+    @Test
+    public void testStraightFlush() {
+        Player testPlayer = new Player("H4 H5 H6 H8 H7");
+        this.isMatched = testPlayer.getStrategy().isStraightFlush(testPlayer.getCards()).isMatched();
+    }
 }
