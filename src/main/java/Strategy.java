@@ -59,6 +59,16 @@ public class Strategy {
         return index;
     }
 
+    public boolean isSequence(List<Card> cards) {
+        this.sortCards(cards);
+        for (int i = 1; i < cards.size(); i++) {
+            if (cards.get(i).getRank() - cards.get(i - 1).getRank() != 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Result isStraight(List<Card> cards) {
         this.sortCards(cards);
         Card highestCard = this.getHighestCard(cards);
@@ -348,6 +358,38 @@ public class Strategy {
             } else {
                 index.clear();
             }
+        }
+        return index;
+    }
+
+    public List<Integer> hasOnePair(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        if (this.isOnePair(cards).isMatched()) {
+            for (int i = 0; i < cards.size(); i++) {
+                if (cards.get(i).getRank() != this.isOnePair(cards).getHighestCard().getRank()) {
+                    index.add(i);
+                }
+            }
+        } else {
+            index.clear();
+        }
+        return index;
+    }
+
+    public List<Integer> hasThreeCardInSequence(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        if (this.isSequence((cards.subList(0, 3)))) {
+            index.add(3);
+            index.add(4);
+        } else if (this.isSequence((cards.subList(1, 4)))) {
+            index.add(0);
+            index.add(4);
+
+        } else if (this.isSequence((cards.subList(2, 5)))) {
+            index.add(0);
+            index.add(1);
         }
         return index;
     }
