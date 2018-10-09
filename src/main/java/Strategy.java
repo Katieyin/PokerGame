@@ -129,4 +129,18 @@ public class Strategy {
         return isNumberOfAKind(cards, 3);
     }
 
+    public Result isFlush(List<Card> cards) {
+        this.sortCards(cards);
+        Card highestCard = this.getHighestCard(cards);
+        boolean isMatched = true;
+        for (int i = 1; i < cards.size(); i++) {
+            if (cards.get(i - 1).getSuit().compareTo(cards.get(i).getSuit()) != 0) {
+                isMatched = false;
+            }
+        }
+        Result result = new Result(highestCard, isMatched, "Flush");
+        return result;
+    }
+
+
 }
