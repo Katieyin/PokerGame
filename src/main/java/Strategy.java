@@ -155,4 +155,17 @@ public class Strategy {
         return result;
     }
 
+    public Result isStraightFlush(List<Card> cards) {
+        this.sortCards(cards);
+        Card highestCard = this.getHighestCard(cards);
+        boolean isMatched;
+        if (isStraight(cards).isMatched() && isFlush(cards).isMatched()) {
+            isMatched = true;
+        } else {
+            isMatched = false;
+        }
+        Result result = new Result(highestCard, isMatched, "Straight Flush");
+        return result;
+    }
+
 }
