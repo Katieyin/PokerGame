@@ -189,4 +189,24 @@ public class Strategy {
 
     }
 
+    public List<Integer> isOneCardFromRoyalFlush(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> royalFlush = new ArrayList<Integer>(Arrays.asList(10, 11, 12, 13, 1));
+        List<Integer> index = new ArrayList<Integer>();
+        int count = 0;
+        for (int i = 0; i < cards.size(); i++) {
+            if (royalFlush.indexOf(cards.get(i).getRank()) >= 0) {
+                count++;
+            } else {
+                index.add(i);
+            }
+        }
+        if (count == 4 && (this.isFlush(cards.subList(0, 4)).isMatched() || this.isFlush(cards.subList(1, 5)).isMatched())) {
+            return index;
+        } else {
+            index.clear();
+            return index;
+        }
+    }
+
 }
