@@ -45,4 +45,11 @@ public class OneExchange {
         List<Integer> index = testPlayer.getStrategy().isOneCardFromStraight(testPlayer.getCards());
         this.isMatched = index.size() == 1;
     }
+
+    @Test
+    public void testOneCardAwayFromStraightFlush() {
+        Player testPlayer = new Player("S10 C2 S9 S6 S7");
+        List<Integer> index = testPlayer.getStrategy().isOneCardFromStraightFlush(testPlayer.getCards());
+        this.isMatched = index.size() == 1;
+    }
 }
