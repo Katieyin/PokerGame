@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private Result result;
     private Strategy strategy;
+    private String exchangeMatch;
 
     public Player(String name, Strategy strategy) {
         this.cards = new ArrayList<Card>();
@@ -45,4 +46,8 @@ public class Player {
     public Strategy getStrategy() { return strategy; }
 
     public void setStrategy(Strategy strategy) { this.strategy = strategy; }
+
+    public String getExchangeMatch() { return exchangeMatch; }
+
+    public void setExchangeMatch(String exchangeMatch) { this.exchangeMatch = exchangeMatch; }
 }
