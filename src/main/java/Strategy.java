@@ -168,4 +168,25 @@ public class Strategy {
         return result;
     }
 
+    public Result isRoyalFlush(List<Card> cards) {
+        this.sortCards(cards);
+        Card highestCard = this.getHighestCard(cards);
+        boolean isMatched = false;
+        int count = 0;
+        List<Integer> royalFlush = new ArrayList<Integer>(Arrays.asList(10, 11, 12, 13, 1));
+        if (isStraightFlush(cards).isMatched()) {
+            for (Card card : cards) {
+                if (royalFlush.indexOf(card.getRank()) >= 0) {
+                    count++;
+                }
+            }
+            if (count == 5) {
+                isMatched = true;
+            }
+        }
+        Result result = new Result(highestCard, isMatched, "Royal Flush");
+        return result;
+
+    }
+
 }
