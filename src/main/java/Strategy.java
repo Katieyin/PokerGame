@@ -46,6 +46,19 @@ public class Strategy {
         return result;
     }
 
+    public List<Integer> findMatch(List<Integer> sequence, List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        for (int i = 4; i >= 0; i--) {
+            if (sequence.indexOf(cards.get(i).getRank()) >= 0) {
+                sequence.remove(sequence.indexOf(cards.get(i).getRank()));
+            } else {
+                index.add(i);
+            }
+        }
+        return index;
+    }
+
     public Result isStraight(List<Card> cards) {
         this.sortCards(cards);
         Card highestCard = this.getHighestCard(cards);
@@ -227,6 +240,30 @@ public class Strategy {
         }
         index.clear();
         return index;
+    }
+
+    public List<Integer> isOneCardFromStraight(List<Card> cards) {
+        this.sortCards(cards);
+        int rank1 = cards.get(0).getRank();
+        int rank2 = cards.get(1).getRank();
+        List<Integer> straight1 = new ArrayList<Integer>(Arrays.asList(rank1, rank1 + 1, rank1 + 2, rank1 + 3, rank1 + 4));
+        List<Integer> straight2 = new ArrayList<Integer>(Arrays.asList(rank2, rank2 + 1, rank2 + 2, rank2 + 3, rank2 + 4));
+        List<Integer> specialStraight = new ArrayList<Integer>(Arrays.asList(10, 11, 12, 13, 1));
+
+        List<Integer> index = new ArrayList<Integer>();
+
+        List<Integer> a = findMatch(straight1, cards);
+        List<Integer> b = findMatch(straight2, cards);
+        List<Integer> c = findMatch(specialStraight, cards);
+        if (specialStraight.size() == 1) {
+            return c;
+        } else if (straight2.size() == 1) {
+            return b;
+        } else if (straight1.size() == 1) {
+            return a;
+        } else {
+            return index;
+        }
     }
 
 }
