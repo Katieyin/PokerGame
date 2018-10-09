@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Strategy {
-    private Result result;
 
     public void sortCards(List<Card> cards) {
         Collections.sort(cards);
@@ -207,6 +206,27 @@ public class Strategy {
             index.clear();
             return index;
         }
+    }
+
+    public List<Integer> isOneCardFromFlush(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> index = new ArrayList<Integer>();
+        for (int i = 0; i < cards.size(); i++) {
+            int count = 0;
+            index.clear();
+            for (int j = 0; j < cards.size(); j++) {
+                if (cards.get(i).getSuit().equals(cards.get(j).getSuit())) {
+                    count++;
+                } else {
+                    index.add(j);
+                }
+            }
+            if (count == 4) {
+                return index;
+            }
+        }
+        index.clear();
+        return index;
     }
 
 }
