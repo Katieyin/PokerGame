@@ -1,5 +1,8 @@
 import org.junit.After;
 import org.junit.Test;
+
+import java.util.List;
+
 import static junit.framework.TestCase.assertTrue;
 
 public class OneExchange {
@@ -20,5 +23,12 @@ public class OneExchange {
     public void testTwoPairs() {
         Player testPlayer = new Player("S3 C7 H3 S7 D9");
         this.isMatched = testPlayer.getStrategy().isTwoPairs(testPlayer.getCards()).isMatched();
+    }
+
+    @Test
+    public void testOneCardAwayFromRoyalFlush() {
+        Player testPlayer = new Player("S10 C7 SJ SA SQ");
+        List<Integer> index = testPlayer.getStrategy().isOneCardFromRoyalFlush(testPlayer.getCards());
+        this.isMatched = index.size() == 1;
     }
 }
