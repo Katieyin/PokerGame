@@ -90,4 +90,9 @@ public class Strategy {
         return isNumberOfAKind(cards, 2);
     }
 
+    public Result isFourOfAKind(List<Card> cards) {
+        this.sortCards(cards);
+        return isNumberOfAKind(cards, 4);
+    }
+
 }
