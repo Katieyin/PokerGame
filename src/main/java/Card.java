@@ -7,6 +7,23 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
     }
 
+    public Card(String[] card) {
+        this.suit = card[0];
+        if (card.length == 3) {
+            this.rank = 10;
+        } else if (card[1].equals("J")) {
+            this.rank = 11;
+        } else if (card[1].equals("Q")) {
+            this.rank = 12;
+        } else if (card[1].equals("K")) {
+            this.rank = 13;
+        } else if (card[1].equals("A")) {
+            this.rank = 1;
+        } else {
+            this.rank = Integer.parseInt(card[1]);
+        }
+    }
+
     public String getSuit() {
         return suit;
     }
