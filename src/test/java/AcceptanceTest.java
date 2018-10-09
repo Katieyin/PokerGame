@@ -134,4 +134,70 @@ public class AcceptanceTest {
     public void testNoStrategy() {
         assertEquals("No Strategy", winners.get(9).getExchangeMatch());
     }
+
+
+//  ------------------WINNING-------------------------
+
+    @Test
+//    Royal flush beats any other hand (Straight Flush vs Royal Flush)
+    public void testRoyalFlushWins() {
+        assertEquals("Royal Flush", winners.get(10).getResult().getCombination());
+        assertEquals("AIP", winners.get(10).getName());
+    }
+
+    @Test
+//    Straight flush beats any hand but royal flush (Four of a Kind vs Straight Flush)
+    public void testStraightFlushWins() {
+        assertEquals("Straight Flush", winners.get(11).getResult().getCombination());
+        assertEquals("AIP", winners.get(11).getName());
+    }
+
+    @Test
+//    4-of-a-kind beats any hand but royal flush and Straight flush (Full House vs Four of a Kind)
+    public void testFourOfAKindWins() {
+        assertEquals("4 Of A Kind", winners.get(12).getResult().getCombination());
+        assertEquals("AIP", winners.get(12).getName());
+    }
+
+    @Test
+//    Full house beats any hand but royal flush, straight flush and 4-of-a-kind (Flush vs Full House)
+    public void testFullHouseWins() {
+        assertEquals("Full House", winners.get(13).getResult().getCombination());
+        assertEquals("AIP", winners.get(13).getName());
+    }
+
+    @Test
+//    Flush beats straight, 3-of-a-kind, two pairs, one pair, and high card (Straight vs Flush)
+    public void testFlushWins() {
+        assertEquals("Flush", winners.get(14).getResult().getCombination());
+        assertEquals("AIP", winners.get(14).getName());
+    }
+
+    @Test
+//    Straight beats 3-of-a-kind, two pairs, one pair, and high card (Three of a kind vs Straight)
+    public void testStraightWins() {
+        assertEquals("Straight", winners.get(15).getResult().getCombination());
+        assertEquals("AIP", winners.get(15).getName());
+    }
+
+    @Test
+//    3-of-a-kind, beats two pairs, one pair, and high card (Two Pairs vs Three of a kind)
+    public void testThreeOfAKindWins() {
+        assertEquals("3 Of A Kind", winners.get(16).getResult().getCombination());
+        assertEquals("AIP", winners.get(16).getName());
+    }
+
+    @Test
+//    Two pairs beats one pair and high cardr (One Pair vs Two Pairs)
+    public void testTwoPairsWins() {
+        assertEquals("Two Pairs", winners.get(17).getResult().getCombination());
+        assertEquals("AIP", winners.get(17).getName());
+    }
+
+    @Test
+//    One pair beats high card (Highest card vs One Pair)
+    public void testOnePairWins() {
+        assertEquals("One Pair", winners.get(18).getResult().getCombination());
+        assertEquals("AIP", winners.get(18).getName());
+    }
 }
