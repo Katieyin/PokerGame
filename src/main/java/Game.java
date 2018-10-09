@@ -50,5 +50,51 @@ public class Game {
         this.exchangeCards = exchangeCards;
     }
 
+    public Player findWinner(int score1, int score2) {
+        Player winner;
+        if (score1 > score2) {
+            winner = this.players.get(0);
+        } else if (score1 == score2) {
+            winner = this.players.get(0).getResult().getHighestCard().isGreaterThan(this.players.get(1).getResult().getHighestCard())
+                    ? this.players.get(0) : this.players.get(1);
+        } else {
+            winner = this.players.get(1);
+        }
+        System.out.println("Winner is: " + winner.getName());
+        return winner;
+    }
 
+    public void changeCards(Player player, List<Integer> index) {
+        for (int i = 0; i < index.size(); i++) {
+            player.discardCard(index.get(i));
+            player.exchangeCard(this.exchangeCards.get(i), index.get(i));
+        }
+        player.sortCards();
+    }
+
+    public Player playGame() {
+        Player winner;
+        System.out.println("------Starting A New Game-----");
+
+        this.players.get(0).printCards();
+        int score1 = this.players.get(0).evaluate();
+        this.players.get(1).printCards();
+        int score2 = this.players.get(1).evaluate();
+
+        winner = this.findWinner(score1, score2);
+
+        List<Integer> index = this.players.get(1).canExchange(score2);
+        if (index.size() > 0) {
+            System.out.println(this.players.get(1).getName() + " is exchanging cards...");
+            this.changeCards(this.players.get(1), index);
+            System.out.print("After exchanging cards, ");
+            this.players.get(1).printCards();
+            score2 = this.players.get(1).evaluate();
+            winner = this.findWinner(score1, score2);
+        }
+        System.out.println("------Good Bye-----");
+        System.out.println(" ");
+        return winner;
+
+    }
 }

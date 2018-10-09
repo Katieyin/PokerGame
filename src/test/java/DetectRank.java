@@ -61,8 +61,8 @@ public class DetectRank {
     public void testHandsWithExhcange() {
         Game game = new Game("HA HJ H10 HK HQ SA SJ S10 SK C9 SQ");
         Player winner = game.playGame();
-        assertEquals("One Card Away From Royal Flush", winners.get(0).getExchangeMatch());
-        assertEquals("Royal Flush", winners.get(0).getResult().getCombination());
-        assertEquals("AIP", winners.get(0).getName());
+        assertEquals("One Card Away From Royal Flush", winner.getExchangeMatch());
+        assertEquals("Royal Flush", winner.getResult().getCombination());
+        assertEquals("AIP", winner.getName());
     }
 }
