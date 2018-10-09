@@ -31,4 +31,11 @@ public class OneExchange {
         List<Integer> index = testPlayer.getStrategy().isOneCardFromRoyalFlush(testPlayer.getCards());
         this.isMatched = index.size() == 1;
     }
+
+    @Test
+    public void testOneCardAwayFromFlush() {
+        Player testPlayer = new Player("S10 C2 S3 SJ S7");
+        List<Integer> index = testPlayer.getStrategy().isOneCardFromFlush(testPlayer.getCards());
+        this.isMatched = index.size() == 1;
+    }
 }
