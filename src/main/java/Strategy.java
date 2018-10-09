@@ -142,5 +142,17 @@ public class Strategy {
         return result;
     }
 
+    public Result isFullHouse(List<Card> cards) {
+        this.sortCards(cards);
+        boolean isMatched;
+        if (isNumberOfAKind(cards, 3).isMatched() && isNumberOfAKind(cards, 2).isMatched() &&
+                isNumberOfAKind(cards, 2).getHighestCard() != isNumberOfAKind(cards, 3).getHighestCard()) {
+            isMatched = true;
+        } else {
+            isMatched = false;
+        }
+        Result result = new Result(isNumberOfAKind(cards, 3).getHighestCard(), isMatched, "Full House");
+        return result;
+    }
 
 }
