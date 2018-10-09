@@ -65,4 +65,12 @@ public class OneExchange {
         List<Integer> index = testPlayer.getStrategy().isOneCardFromStraight(testPlayer.getCards());
         this.isMatched = index.size() == 1;
     }
+
+    @Test
+    public void testThreeWithSameRank() {
+        Player testPlayer = new Player("S3 C3 H3 S7 S9");
+        this.size = this.getExchangeSize(testPlayer);
+        List<Integer> index = testPlayer.getStrategy().isThreeOfSameRank(testPlayer.getCards());
+        this.isMatched = index.size() == 2;
+    }
 }
