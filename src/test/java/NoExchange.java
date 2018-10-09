@@ -10,12 +10,12 @@ public class NoExchange {
     public void checkExchangeSize() {
         assertTrue(this.isMatched);
     }
+
     @Test
     public void testStraight() {
         Player testPlayer = new Player("S5 C4 H8 S7 D6");
         this.isMatched = testPlayer.getStrategy().isStraight(testPlayer.getCards()).isMatched();
     }
-
 
     @Test
     public void testFourOfAKind() {
