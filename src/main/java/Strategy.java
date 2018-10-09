@@ -90,6 +90,35 @@ public class Strategy {
         return isNumberOfAKind(cards, 2);
     }
 
+    public Result isTwoPairs(List<Card> cards) {
+        this.sortCards(cards);
+        int pair = 0;
+        int pairCounter = 0;
+        Card highestCard = cards.get(0);
+        boolean isMatched = true;
+        if (isFourOfAKind(cards).isMatched()) {
+            isMatched = false;
+        } else {
+            for (int i = 0; i < cards.size(); i++) {
+                for (int j = 0; j < cards.size(); j++) {
+                    if (cards.get(i).getRank() == cards.get(j).getRank()) {
+                        pairCounter++;
+                    }
+                }
+                if (pairCounter > 1) {
+                    pair++;
+                    if (cards.get(i).isGreaterThan(highestCard)) {
+                        highestCard = cards.get(i);
+                    }
+                }
+                pairCounter = 0;
+            }
+            isMatched = pair == 4;
+        }
+        Result result = new Result(highestCard, isMatched, "Two Pairs");
+        return result;
+    }
+
     public Result isFourOfAKind(List<Card> cards) {
         this.sortCards(cards);
         return isNumberOfAKind(cards, 4);
