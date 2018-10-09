@@ -266,4 +266,18 @@ public class Strategy {
         }
     }
 
+    public List<Integer> isOneCardFromStraightFlush(List<Card> cards) {
+        this.sortCards(cards);
+        List<Integer> straightIndex = new ArrayList<Integer>();
+        List<Integer> flushIndex = new ArrayList<Integer>();
+        straightIndex = isOneCardFromStraight(cards);
+        flushIndex = isOneCardFromFlush(cards);
+        if (straightIndex.size() == 1 && flushIndex.size() == 1 && straightIndex.get(0).equals(flushIndex.get(0))) {
+            return straightIndex;
+        } else {
+            straightIndex.clear();
+            return straightIndex;
+        }
+    }
+
 }
