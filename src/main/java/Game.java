@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,4 +101,21 @@ public class Game {
         return winner;
 
     }
+
+    public static void main(String args[]) {
+        try {
+            File file = new File("src/main/java/inputCards.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                Game game = new Game(line);
+                game.playGame();
+            }
+            fileReader.close();
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+
 }
