@@ -25,6 +25,7 @@ public class Player {
             Card card = new Card(inputCard);
             this.cards.add(card);
         }
+
     }
 
     public List<Card> getCards() { return cards; }
@@ -50,6 +51,16 @@ public class Player {
     public String getExchangeMatch() { return exchangeMatch; }
 
     public void setExchangeMatch(String exchangeMatch) { this.exchangeMatch = exchangeMatch; }
+
+    public void addCard(Card card) { this.cards.add(card); }
+
+    public void exchangeCard(Card card, int index) {
+        this.cards.add(index, card);
+    }
+
+    public void discardCard(int index) {
+        this.cards.remove(index);
+    }
 
     public void printCards() {
         System.out.print(this.getName() + " has: ");
