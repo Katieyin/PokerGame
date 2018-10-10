@@ -288,13 +288,4 @@ public class AcceptanceTest {
         assertEquals("Flush", winners.get(31).getResult().getCombination());
         assertEquals("AIP", winners.get(31).getName());
     }
-
-//  ------------------BONUS-------------------------
-    @Test
-    public void testComplex1Away() {
-//        H2 H3 H4 H5 H6  vs  H5 D6 H6 H8 H9  exchange card: H7
-        assertEquals("One Card Away From Straight Flush", winners.get(32).getExchangeMatch());
-        assertEquals("Straight Flush", winners.get(32).getResult().getCombination());
-        assertEquals("AIP", winners.get(32).getName());
-    }
 }
